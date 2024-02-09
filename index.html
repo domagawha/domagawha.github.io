@@ -78,6 +78,9 @@
     </style>
 </head>
 <body>
+    <audio loop>  
+        <source src="background.mp3" type="audio/mpeg">
+    </audio>
     <img src="valentine5.png" alt="Valentine Image" id="bottom-right-image">
     <img src="valentine3.gif" alt="Valentine GIF 3" id="top-center-gif">
     <h1 class="valentine-text">Will you be my Valentine?</h1> 
@@ -122,13 +125,16 @@
         const button1 = document.getElementById('button1');
         const button2 = document.getElementById('button2');
         const gifOverlay = document.getElementById('gif-overlay');
+        const audio = document.querySelector('audio'); // Select the audio element
 
         button1.addEventListener('click', () => {
-            gifOverlay.style.display = 'flex'; 
+            gifOverlay.style.display = 'flex';
+            audio.play();
         });
 
         button2.addEventListener('click', () => {
-            gifOverlay.style.display = 'flex'; 
+            gifOverlay.style.display = 'flex';
+            audio.play();
         });
     </script>
 </body>
