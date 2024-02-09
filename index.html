@@ -59,9 +59,19 @@
             left: 10px;       
             max-width: 20%; 
         }
+
+        #top-center-gif {
+            position: fixed;
+            top: 10px;        /* Adjust for spacing from the top */
+            left: 50%;        /* Centers the GIF horizontally */
+            transform: translateX(-50%); /* Precise centering adjustment */
+            max-width: 40%;   /* Adjust size as needed */
+        }
+        
     </style>
 </head>
 <body>
+    <img src="valentine3.gif" alt="Valentine GIF 3" id="top-center-gif">
     <h1 class="valentine-text">Will you be my Valentine?</h1> 
     <div class="button-container">
         <button id="button1">No >:( </button>
