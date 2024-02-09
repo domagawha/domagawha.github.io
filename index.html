@@ -10,12 +10,13 @@
             margin: 0; 
             display: flex;
             justify-content: center; 
-            align-items: center;     
+            align-items: center;  
+            flex-direction: column; /* Arrange items vertically */
         }
 
         .button-container {
             display: flex;          
-            gap: 10px;             
+            gap: 10px;              
         }
 
         button {
@@ -25,12 +26,19 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
+        .valentine-text {
+            color: lightpink;
+            font-size: 3em;  
+            text-align: center; 
+        }
     </style>
 </head>
 <body>
+    <h1 class="valentine-text">Will you be\nmy Valentine?</h1> 
     <div class="button-container">
-        <button>No >:(</button>
-        <button>Yes ^-^/button>
+        <button>Button 1</button>
+        <button>Button 2</button>
     </div>
 </body>
 </html>
