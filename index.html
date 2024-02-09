@@ -1,5 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Buttons</title>
+    <style>
+        body {
+            height: 100vh; 
+            margin: 0; 
+            display: flex;
+            justify-content: center; 
+            align-items: center;  
+            flex-direction: column; 
+        }
+
+        .button-container {
+            display: flex;          
+            gap: 10px;              
+        }
+
+        button {
+            padding: 8px 15px;      
+            background-color: lightpink; 
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .valentine-text {
+            color: lightpink;
+            font-size: 3em;  
+            text-align: center; 
+        }
+    </style>
+</head>
 <body>
     <h1 class="valentine-text">Will you be my Valentine?</h1> 
     <div class="button-container">
@@ -12,30 +46,27 @@
     const button1 = document.getElementById('button1');
     const button2 = document.getElementById('button2');
 
-    // Get bounding rectangles (position and size) for the buttons
-    const button1Rect = button1.getBoundingClientRect(); 
+    const button1Rect = button1.getBoundingClientRect();
     const button2Rect = button2.getBoundingClientRect();
 
-    // Calculate distances from the mouse pointer to the center of each button
-    const distToButton1 = calculateDistance(event, button1Rect);
-    const distToButton2 = calculateDistance(event, button2Rect);
+    const distanceToButton1 = Math.sqrt(
+        Math.pow(event.clientX - button1Rect.left - button1Rect.width/2, 2) +
+        Math.pow(event.clientY - button1Rect.top - button1Rect.height/2, 2)
+    );
 
-    // Update button text if the mouse is closer to button 1
-    if (distToButton1 < distToButton2) {
-        button1.textContent = 'Closer'; 
+    const distanceToButton2 = Math.sqrt(
+        Math.pow(event.clientX - button2Rect.left - button2Rect.width/2, 2) +
+        Math.pow(event.clientY - button2Rect.top - button2Rect.height/2, 2)
+    );
+
+    if (distanceToButton1 < distanceToButton2) {
+        button1.textContent = 'Closer';
+        button2.textContent = 'Further';
     } else {
-        button1.textContent = 'Button 1'; // Reset to original text 
+        button1.textContent = 'Further';
+        button2.textContent = 'Closer';
     }
 });
-
-// Helper function to calculate the distance between mouse and button center
-function calculateDistance(event, rect) {
-    const buttonCenterX = rect.left + rect.width / 2;
-    const buttonCenterY = rect.top + rect.height / 2;
-    const dx = event.clientX - buttonCenterX;
-    const dy = event.clientY - buttonCenterY;
-    return Math.sqrt(dx * dx + dy * dy); 
-}
 
     </script>
 </body>
