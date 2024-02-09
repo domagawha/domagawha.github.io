@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Centered Buttons</title>
     <style>
         body {
-            height: 100vh; 
-            margin: 0; 
+            height: 100%;
+            margin: 0;
             display: flex;
-            justify-content: center; 
-            align-items: center;  
             flex-direction: column; 
+            align-items: center;
+            background-color: white;
         }
 
         .button-container {
-            display: flex;          
+            display: flex;         
             gap: 10px;              
         }
 
@@ -34,13 +33,35 @@
             font-size: 3em;  
             text-align: center; 
         }
+
+        #gif-overlay {
+            display: none;       
+            position: fixed;     
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: semi-transparent; 
+            z-index: 1000;       
+            align-items: center;
+            align-content:center;
+            background-color:rgba(255, 255, 255, 0.8);
+        }
+
+        #gif-image {
+            max-width: 90%;  
+            max-height: 90%;  
+        }
     </style>
 </head>
 <body>
-    <h1 class="valentine-text">Will you be my Valentine?</h1> 
+    <h1 class="valentine-text">Will you be my Valentine?</h1>
     <div class="button-container">
-        <button id="button1">No >:( </button>
-        <button id="button2">Yes ^-^</button>
+        <button id="button1">No :( </button>
+        <button id="button2">Yes :)</button>
+    </div>
+    <div id="gif-overlay">
+        <img src="valentine.gif" alt="Valentine GIF" id="gif-image">
     </div>
 
     <script>
@@ -53,22 +74,35 @@
 
             const distanceToButton1 = Math.sqrt(
                 Math.pow(event.clientX - button1Rect.left - button1Rect.width/2, 2) +
-                Math.pow(event.clientY - button1Rect.top - button1Rect.height/2, 2)
+                Math.pow(event.centerY - button1Rect.top - button1Rect.height/2, 2)
             );
 
             const distanceToButton2 = Math.sqrt(
                 Math.pow(event.clientX - button2Rect.left - button2Rect.width/2, 2) +
-                Math.pow(event.clientY - button2Rect.top - button2Rect.height/2, 2)
+                Math.pow(event.centerY - button2Rect.top - button2Rect.height/2, 2)
             );
 
             if (distanceToButton1 < distanceToButton2) {
-                button1.textContent = 'Yes ^-^';
-                button2.textContent = 'No >:( ';
+                button1.textContent = 'Yes :)';
+                button2.textContent = 'No :(';
             } else {
-                button1.textContent = 'No >:( ';
-                button2.textContent = 'Yes ^-^';
+                button1.textContent = 'No :(';
+                button2.textContent = 'Yes :)';
             }
+        });
+
+        // Button click 
+        const button1 = document.getElementById('button1');
+        const button2 = document.getElementById('button2');
+        const gifOverlay = document.getElementById('gif-overlay');
+
+        button1.addEventListener('click', () => {
+            gifOverlay.style.display = 'flex'; 
+        });
+
+        button2.addEventListener('click', () => {
+            gifOverlay.style.display = 'flex'; 
         });
     </script>
 </body>
-</html>
+</html> 
