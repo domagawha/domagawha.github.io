@@ -21,11 +21,12 @@
 
         button {
             padding: 8px 15px;      
-            background-color: white;      /* White background */
-            border: 2px solid lightpink;   /* Light pink outline */
-            color: lightpink;              /* Light pink text */
+            background-color: white;
+            border: 2px solid lightpink;  
+            color: lightpink;             
             border-radius: 5px;
             cursor: pointer;
+            font-weight: bold;  
         }
 
         .valentine-text {
@@ -38,37 +39,36 @@
 <body>
     <h1 class="valentine-text">Will you be my Valentine?</h1> 
     <div class="button-container">
-        <button id="button1">Button 1</button>
-        <button id="button2">Button 2</button>
+        <button id="button1">No >:( </button>
+        <button id="button2">Yes ^-^</button>
     </div>
 
     <script>
         document.addEventListener('mousemove', function(event) {
-    const button1 = document.getElementById('button1');
-    const button2 = document.getElementById('button2');
+            const button1 = document.getElementById('button1');
+            const button2 = document.getElementById('button2');
 
-    const button1Rect = button1.getBoundingClientRect();
-    const button2Rect = button2.getBoundingClientRect();
+            const button1Rect = button1.getBoundingClientRect();
+            const button2Rect = button2.getBoundingClientRect();
 
-    const distanceToButton1 = Math.sqrt(
-        Math.pow(event.clientX - button1Rect.left - button1Rect.width/2, 2) +
-        Math.pow(event.clientY - button1Rect.top - button1Rect.height/2, 2)
-    );
+            const distanceToButton1 = Math.sqrt(
+                Math.pow(event.clientX - button1Rect.left - button1Rect.width/2, 2) +
+                Math.pow(event.clientY - button1Rect.top - button1Rect.height/2, 2)
+            );
 
-    const distanceToButton2 = Math.sqrt(
-        Math.pow(event.clientX - button2Rect.left - button2Rect.width/2, 2) +
-        Math.pow(event.clientY - button2Rect.top - button2Rect.height/2, 2)
-    );
+            const distanceToButton2 = Math.sqrt(
+                Math.pow(event.clientX - button2Rect.left - button2Rect.width/2, 2) +
+                Math.pow(event.clientY - button2Rect.top - button2Rect.height/2, 2)
+            );
 
-    if (distanceToButton1 < distanceToButton2) {
-        button1.textContent = 'Closer';
-        button2.textContent = 'Further';
-    } else {
-        button1.textContent = 'Further';
-        button2.textContent = 'Closer';
-    }
-});
-
+            if (distanceToButton1 < distanceToButton2) {
+                button1.textContent = 'Yes ^-^';
+                button2.textContent = 'No >:( ';
+            } else {
+                button1.textContent = 'No >:( ';
+                button2.textContent = 'Yes ^-^';
+            }
+        });
     </script>
 </body>
 </html>
